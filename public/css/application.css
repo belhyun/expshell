@@ -1,0 +1,43 @@
+body{
+  margin:0px;
+  padding:0px;
+  background-color:rgb(238,238,238);
+  height: 100%;
+  overflow-y: scroll;
+  display:block;
+}
+
+body a{
+  text-decoration:none;
+  color:#dddddd;
+}
+
+#nav-top{
+  width:534px;
+  border-bottom: 1px solid rgb(221,221,221);
+  margin:16px auto;
+  padding: 0px 0px 12px 0px;
+}
+
+#nav-top .container{
+
+}
+
+#nav-top a img.logo{
+  width:160px;
+  height:60px;
+}
+
+#nav-top input{
+  vertical-align:top;
+  margin:16px 0px 0px 16px;
+  border:0px none;
+  height:30px;
+  width: 306px;
+  padding:0px 0px 0px 10px;
+}
+
+#nav-top a img.search{
+  vertical-align:top;
+  margin:16px 0px 0px 0px;
+}

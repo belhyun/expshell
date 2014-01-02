@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/../../vendor/autoload.php';
+
 class IndexController extends ControllerBase
 {
   public function initialize()
@@ -10,7 +12,7 @@ class IndexController extends ControllerBase
 
   public function indexAction()
   {
-    $this->assets->addCss('css/application.css.scss');
+    $this->assets->addCss('css/application.css');
   }
 }
 

@@ -1,2 +1,27 @@
 <div id="nav-top">
+  <div class="containter">
+  <a href="/">
+    <?php
+      echo $this->tag->image(
+        array(
+          "img/logo.png",
+          "alt" => "expshell",
+          "class" => "logo"
+        )
+      );
+    ?>
+  </a>
+  <input type="text" placeholder="Search command"></input>
+  <a href="/">
+    <?php
+      echo $this->tag->image(
+        array(
+          "img/search.png",
+          "alt" => "expshell",
+          "class" => "search"
+        )
+      );
+    ?>
+  </a>
+  </div>
 </div>
