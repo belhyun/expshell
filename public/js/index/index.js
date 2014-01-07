@@ -3,7 +3,7 @@ $(document).ready(function(){
     if(!('localStorage' in window) || window['localStorage'] == null){
       return false;
     }
-    if(localStorage['data'] == "undefined"){
+    if(_.isEmpty(localStorage['data'])){
       localStorage.setItem('data',JSON.stringify([]));
     }
     var cur_data = JSON.parse(localStorage.getItem('data'));
@@ -12,8 +12,8 @@ $(document).ready(function(){
     return cur_data;
   }
   Object.prototype.get_commands = function(){
-    if(localStorage['data'] == "undefined"){
-      return 'user commands not exists';
+    if(_.isEmpty(localStorage['data'])){
+      return false;
     }else{
       return JSON.parse(localStorage.getItem('data'));
     }
@@ -28,7 +28,12 @@ $(document).ready(function(){
     $("body #expshell iframe").attr("src","http://explainshell.com/explain?cmd="+command);
     this.add_command(command);
     var commands = this.get_commands(), result ='';
-    $((Mustache.render('<li>{{.}}</li>',command))).insertBefore("#my-commands ul li:first-child");
+    if($("#my-commands ul li").length == 0){
+      $((Mustache.render('<li>{{.}}</li>',command))).insertAfter("#my-commands ul");
+    }
+    else{
+      $((Mustache.render('<li>{{.}}</li>',command))).insertBefore("#my-commands ul li:first-child");
+    }
   });
 
   $("input").keypress(function(e){
@@ -38,7 +43,8 @@ $(document).ready(function(){
   });
   (function(){
     var commands = this.get_commands(), result ='';
-    for(var i=0; i<commands.length;i++){
+    if(!commands) return false;
+    for(var i=1; i<=commands.length;i++){
       result += Mustache.render('<li>{{.}}</li>',commands[commands.length-i]);
     }
     $("#my-commands ul").append(result);
