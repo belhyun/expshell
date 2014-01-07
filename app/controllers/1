@@ -1,9 +1,0 @@
-$(document).ready(function(){
-  $("#nav-top .container a img.search").click(function(e){
-    e.preventDefault();
-    var command = _.escape($("#nav-top .container input").val());
-    $("body #expshell iframe").attr("src","http://explainshell.com/explain?cmd="+command);
-    var commands = localStorage.setItem("foo","bar");
-    console.log(localStorage.getItem("foo"));
-  });
-});
