@@ -44,13 +44,13 @@ body a{
 }
 
 body #expshell{
-  float:left;
-  margin:0px;
+  margin:0 auto;
   padding:0px;
   overflow:hidden;
   width:80%;
   height:1024px;
   padding-top: 16px;
+  border: 1px solid rgb(221,221,221);
 }
 
 body #expshell iframe{
@@ -61,9 +61,9 @@ body #expshell iframe{
 }
 
 body #my-commands{
-  position:fixed;
-  left:1530px;
-  width:250px;
+  position:relative;
+  margin: 0 auto;
+  width:80%;
 }
 body #my-commands h4{
   display:block;
@@ -71,7 +71,9 @@ body #my-commands h4{
   text-align:center;
   background-color:rgb(221,221,221);
 }
-
+body #my-commands ul{
+  border: 1px solid rgb(221,221,221);
+}
 body #my-commands ul li{
-  padding:5px;
+  padding:8px;
 }

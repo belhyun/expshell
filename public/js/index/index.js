@@ -29,7 +29,7 @@ $(document).ready(function(){
     this.add_command(command);
     var commands = this.get_commands(), result ='';
     if($("#my-commands ul li").length == 0){
-      $((Mustache.render('<li>{{.}}</li>',command))).insertAfter("#my-commands ul");
+      $("#my-commands ul").append($((Mustache.render('<li>{{.}}</li>',command))));
     }
     else{
       $((Mustache.render('<li>{{.}}</li>',command))).insertBefore("#my-commands ul li:first-child");
@@ -45,7 +45,7 @@ $(document).ready(function(){
     var commands = this.get_commands(), result ='';
     if(!commands) return false;
     for(var i=1; i<=commands.length;i++){
-      result += Mustache.render('<li>{{.}}</li>',commands[commands.length-i]);
+      result += Mustache.render('<li>{{.}}</li>',commands[commands.length-i].substring(0,40));
     }
     $("#my-commands ul").append(result);
   }());
