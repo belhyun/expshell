@@ -18,7 +18,7 @@ class IndexController extends ControllerBase
     #$this->view->setViewsDir('app/views/');
   }
 
-  public function indexAction()
+  public function indexAction($serial)
   {
     /*
     $command = $this->request->get("command");
@@ -29,9 +29,14 @@ class IndexController extends ControllerBase
       echo $response;
     }
     */
+    $commands = Users::findFirstById($this->request->getPost("serial"));
     $this->view->start();
     $this->view->render('index','index');
     $this->view->finish();
+  }
+
+  public function insertAction()
+  {
   }
 }
 
