@@ -1,5 +1,9 @@
 (function($_){
-  $_.serial_id = Math.random().toString(36).substring(7);
+  if(_.isUndefined(location.search.split('serial_id=')[1])){
+    $_.serial_id = Math.random().toString(36).substring(7);
+  }else{
+    $_.serial_id = location.search.split('serial_id=')[1];
+  }
   $_.host = "http://explainshell.eventstore.co.kr";
   Object.prototype.add_command = function(command){
     if(!('localStorage' in window) || window['localStorage'] == null){
@@ -64,6 +68,10 @@
         serial_id: $_.serial_id 
       };
       request.call(this,args);
+    });
+
+    $("body button").click(function(){
+      location.href = $_.host+"/command/get?serial_id="+$_.serial_id;
     });
 
     $("<span id='serial-id'>"+$_.serial_id+"</span>").insertAfter("#save-commands");

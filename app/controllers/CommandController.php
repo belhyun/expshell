@@ -14,12 +14,20 @@ class CommandController extends \Phalcon\Mvc\Controller
       $user_commands = new Users();
       $user_commands->serial_id = $_GET["serial_id"];
       $user_commands->commands = $_GET["commands"];
-      if($user_commands->save()){
-      }else{
+      if(count($this->modelsManager->executeQuery("SELECT * FROM Users WHERE serial_id = :serial_id:", array(
+        'serial_id' => $_GET['serial_id']
+      )))>0){
+        Users::find("serial_id='{$_GET['serial_id']}'")->delete();
+        /*
+        $this->modelsManager->executeQuery("DELETE FROM Users WHERE serial_id = :serial_id:", array(
+          'v' => $_GET['serial_id']
+        ));
+        */
       }
+      $user_commands->save();
     }
     $this->view->disable();
-    $this->response->redirect("http://explainshell.eventstore.co.kr", true);
+    $this->response->redirect("http://explainshell.eventstore.co.kr?serial_id=".$_GET['serial_id'], true);
   }
 
   public function getAction()

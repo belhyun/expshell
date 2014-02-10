@@ -15,7 +15,7 @@ body a{
 #nav-top{
   width:750px;
   border-bottom: 1px solid rgb(221,221,221);
-  margin:16px auto;
+  margin:16px 35%;
   padding:0px;
   background-color: rgb(221,221,221);
 }
@@ -81,16 +81,23 @@ body #my-commands ul li{
 body #save-commands{
   display:inline-block;
   position:absolute;
-  left:200px;
-  top:37px;
+  left:10%;
+  top:57px;
   background-color:rgb(221,221,221);
 }
 
 body #serial-id{
   position:absolute;
-  left:200px;
-  top:67px;
+  left:18%;
+  top:57px;
   padding:5px;
   border:1px solid;
   color: red;
+}
+
+body button{
+  position:absolute;
+  left:10%;
+  top:27px;
+  background-color:rgb(221,221,221);
 }
