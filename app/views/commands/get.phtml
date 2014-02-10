@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>belhyun-expshell</title>
+    <?php $this->assets->outputCss() ?>
+  </head>
+<body>
+<div id="my-commands">
+<h4>My Recently Commands</h4>
+<ul>
+    <?php $commands = explode("\n", $commands[0]->commands); ?>
+    <?php foreach($commands as $command){ ?>
+    <li><?php echo $command; ?></li>
+    <?php } ?>
+</ul>
+</div>
+</body>
+</html>

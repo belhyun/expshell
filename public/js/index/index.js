@@ -1,5 +1,6 @@
 (function($_){
   $_.serial_id = Math.random().toString(36).substring(7);
+  $_.host = "http://explainshell.eventstore.co.kr";
   Object.prototype.add_command = function(command){
     if(!('localStorage' in window) || window['localStorage'] == null){
       return false;
@@ -20,20 +21,14 @@
     }
   };
   $(document).ready(function(){
-    var ajax_request= function(args){
-      $.ajax({
-        type: args["method"],
-        url: args["url"], 
-        data: args["data"] || {},
-        dataType: "json",
-        async: false,
-        success: function(){
-          alert("success");
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown){
-          console.log(errorThrown);
+    var request = function(args){
+      var queryStr = '?', hasOwnProperty = Object.prototype.hasOwnProperty;
+      for (ele in args["data"]){
+        if(!_.isFunction(ele) && args["data"].hasOwnProperty(ele)){
+          queryStr += ele+"="+args["data"][ele]+"&";
         }
-      });
+      }
+      location.replace(args["url"]+queryStr);
     };
 
     $("#nav-top .container a img.search").click(function(e){
@@ -63,13 +58,15 @@
     $("body input#save-commands").click(function(e){
       e.preventDefault();
       var commands = Array.prototype.slice.call(this.get_commands(),0), args = {};
-      args.method = "POST";args.url="/command/insert";
+      args.method = "POST";args.url=$_.host+"/command/insert";
       args.data={
         commands: encodeURI(commands.join("\n")),
         serial_id: $_.serial_id 
       };
-      ajax_request.call(this,args);
+      request.call(this,args);
     });
+
+    $("<span id='serial-id'>"+$_.serial_id+"</span>").insertAfter("#save-commands");
     (function(){
       var commands = this.get_commands(), result ='';
       if(!commands) return false;

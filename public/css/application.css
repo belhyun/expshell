@@ -81,7 +81,16 @@ body #my-commands ul li{
 body #save-commands{
   display:inline-block;
   position:absolute;
-  left:420px;
+  left:200px;
   top:37px;
   background-color:rgb(221,221,221);
+}
+
+body #serial-id{
+  position:absolute;
+  left:200px;
+  top:67px;
+  padding:5px;
+  border:1px solid;
+  color: red;
 }

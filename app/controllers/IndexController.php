@@ -29,9 +29,10 @@ class IndexController extends ControllerBase
       echo $response;
     }
     */
-    $commands = Users::findFirstById($this->request->getPost("serial"));
+
     $this->view->start();
     $this->view->render('index','index');
+    $this->view->setVar("commands", $commands);
     $this->view->finish();
   }
 
